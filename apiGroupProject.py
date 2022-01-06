@@ -42,9 +42,20 @@ class gallery:
     floor: int
 
 json_data = requests.get('https://api.artic.edu/api/v1/artworks').json()
-#print(json_data)
+# level 0
+for x in json_data.keys(): # iterate through level 0 keys
+    if x == 'data': 
+        # level 1
+        for y in json_data['data'][0]: # y is a list
+            z = json_data['data'][0] # z is a dict
+            #print(z)
+            for w in z:
+                #print(w)
+                if w == 'title':
+                    print(z[w])
+               
+         
+    else:
+        continue
 
-id = json_data['data'][10]['id']
-name = json_data['data'][10]['title']
-print(id)
-
+        
