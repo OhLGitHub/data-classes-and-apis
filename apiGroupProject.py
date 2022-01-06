@@ -3,10 +3,6 @@
 import requests
 from dataclasses import dataclass
 
-def getHTML(url):
-    response = requests.get(url)
-    return response.text
-
 @dataclass
 class Art:
     id: int
