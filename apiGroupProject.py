@@ -46,16 +46,21 @@ json_data = requests.get('https://api.artic.edu/api/v1/artworks').json()
 for x in json_data.keys(): # iterate through level 0 keys
     if x == 'data': 
         # level 1
-        for y in json_data['data'][0]: # y is a list
-            z = json_data['data'][0] # z is a dict
-            #print(z)
-            for w in z:
-                #print(w)
-                if w == 'title':
-                    print(z[w])
-               
-         
-    else:
-        continue
+        for i in range(0, len(json_data['data'])): # json_data['data'] is a list of dictionaries
+            #print(json_data['data'][i])
+            titles = []
+            artists = []
+            for y in json_data['data'][i]:
+                if y == 'title':
+                    title = json_data['data'][i][y]
+                    titles.append(title)
+                if y == 'artist_title':
+                    artist = json_data['data'][i][y]
+                    artists.append(artist)
+            print(titles)
+            print(artists)
+                
 
-        
+     
+           
+                
