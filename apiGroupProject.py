@@ -35,7 +35,7 @@ class Gallery:
 
 json_data = requests.get('https://api.artic.edu/api/v1/artworks').json()
 # level 0
-def populate(thing, json_data, keys): # thing is a class, json_data is json dictionary, keys is a list
+def populate(thing, json_data, keys): # thing is a class, json_data is json dictionary, keys is a list, returns a list of thing instances
     length = len(keys)
     data = []
     class_list = []
@@ -59,13 +59,4 @@ populate(Art, json_data, ['id', 'title', 'artist_title'])
 populate(Artist, json_data, ['artist_id', 'artist_title'])
 populate(Gallery, json_data, ['gallery_id', 'gallery_title'])
 populate(Style, json_data, ['style_id', 'style_title'])
-populate(Type, json_data, ['artwork_type_id', 'artwork_type_title'])
-
-                            
-                    
-    
-                
-
-     
-           
-                
+populate(Type, json_data, ['artwork_type_id', 'artwork_type_title'])            
