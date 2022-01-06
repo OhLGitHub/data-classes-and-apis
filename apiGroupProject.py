@@ -32,11 +32,6 @@ class Gallery:
     title: str
     type: str
 
-art_data = requests.get('https://api.artic.edu/api/v1/artworks').json()
-artist_data = requests.get('https://api.artic.edu/api/v1/artists').json()
-place_data = requests.get('https://api.artic.edu/api/v1/places').json()
-gallery_data = requests.get('https://api.artic.edu/api/v1/galleries').json()
-exhibition_data = requests.get('https://api.artic.edu/api/v1/exhibitions').json()
 # level 0
 def populate(thing, api_data, keys): # thing is a class, json_data is json dictionary, keys is a list, returns a list of thing instances
     length = len(keys)
@@ -57,7 +52,15 @@ def populate(thing, api_data, keys): # thing is a class, json_data is json dicti
     print(class_list)
     return class_list
 
+# getting urls
+art_data = requests.get('https://api.artic.edu/api/v1/artworks').json()
+artist_data = requests.get('https://api.artic.edu/api/v1/artists').json()
+place_data = requests.get('https://api.artic.edu/api/v1/places').json()
+gallery_data = requests.get('https://api.artic.edu/api/v1/galleries').json()
+exhibition_data = requests.get('https://api.artic.edu/api/v1/exhibitions').json()
 
+
+# creating lists of dataclass instances
 populate(Art, art_data, ['id', 'title', 'artist_title'])
 populate(Artist, artist_data, ['id', 'title'])
 populate(Place, place_data, ['id', 'title', 'type'])
